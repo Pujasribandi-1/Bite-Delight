@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bite Delight - Dynamic Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #90a8b0;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+
+    header {
+      background-color: #654d4d;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .menu-section {
+      padding: 20px;
+    }
+
+    .menu-section h2 {
+      border-bottom: 2px solid #6f695d;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #6d6d6d;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+    }
+
+    footer {
+      background-color: #191414;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bite Delight</h1>
+    <p>Welcome to our dynamic menu</p>
+  </header>
+
+  <div id="menu-container"></div>
+
+  <footer>
+    <p>&copy; 2025 Bite Delight. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuData = {
+      "Starters": [
+        { name: "Tomato Basil Soup", price: 350 },
+        { name: "Garlic Breadsticks", price: 260 },
+        { name: "Garden Salad", price: 375 }
+      ],
+      "Main Course": [
+        { name: "Grilled Chicken Alfredo", price: 950 },
+        { name: "Vegetable Stir Fry", price: 770 },
+        { name: "Beef Lasagna", price: 1050 }
+      ],
+      "Desserts": [
+        { name: "Chocolate Lava Cake", price: 500 },
+        { name: "Vanilla Cheesecake", price: 390 },
+        { name: "Fruit Salad", price: 320 }
+      ],
+      "Beverages": [
+        { name: "Lemonade", price: 175 },
+        { name: "Hot Coffee", price: 220 },
+        { name: "Orange Juice", price: 240 }
+      ]
+    };
+
+    const container = document.getElementById('menu-container');
+
+    for (const section in menuData) {
+      const sectionDiv = document.createElement('section');
+      sectionDiv.classList.add('menu-section');
+
+      const heading = document.createElement('h2');
+      heading.textContent = section;
+      sectionDiv.appendChild(heading);
+
+      const list = document.createElement('ul');
+
+      menuData[section].forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - ₹${item.price}`;
+        list.appendChild(listItem);
+      });
+
+      sectionDiv.appendChild(list);
+      container.appendChild(sectionDiv);
+    }
+  </script>
+
+</body>
+</html>
